@@ -4,109 +4,107 @@ const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.getElementById('menu-icon');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    if (mobileMenu.classList.contains('hidden')) {
-        menuIcon.className = 'fa-solid fa-bars text-2xl';
-    } else {
-        menuIcon.className = 'fa-solid fa-xmark text-2xl';
-    }
-});
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.className = 'fa-solid fa-bars text-2xl';
-    });
-});
-
-// Testimonial Carousel Data & Logic
-const testimonials = [
-    {
-        quote: "Nafiur delivered our backend FastAPI endpoints with exceptional speed and precision. His code is clean, robust, and well-structured!",
-        author: "Alex Morgan",
-        role: "Senior Full-Stack Engineer"
-    },
-    {
-        quote: "Working with Md Nafiur Rahman was seamless. He designed a clear dataset cleaning script that saved our team dozens of hours.",
-        author: "Sarah Jenkins",
-        role: "Data Lead & Project Director"
-    },
-    {
-        quote: "Great attention to detail! His React component architecture and responsive design skill made our project look world-class.",
-        author: "David Chen",
-        role: "Product Designer"
-    }
-];
-
-let currentTestimonial = 0;
-const quoteEl = document.getElementById('testimonial-quote');
-const authorEl = document.getElementById('testimonial-author');
-const roleEl = document.getElementById('testimonial-role');
-const dots = document.querySelectorAll('#carousel-dots .dot');
-
-function updateTestimonial(index) {
-    currentTestimonial = index;
-    quoteEl.innerText = `"${testimonials[index].quote}"`;
-    authorEl.innerText = testimonials[index].author;
-    roleEl.innerText = testimonials[index].role;
-
-    dots.forEach((dot, i) => {
-        if (i === index) {
-            dot.className = 'dot w-2.5 h-2.5 rounded-full bg-cyan-400 cursor-pointer';
-        } else {
-            dot.className = 'dot w-2.5 h-2.5 rounded-full bg-gray-700 cursor-pointer';
+if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        if (menuIcon) {
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
         }
     });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            }
+        });
+    });
 }
-
-document.getElementById('next-testimonial').addEventListener('click', () => {
-    let nextIndex = (currentTestimonial + 1) % testimonials.length;
-    updateTestimonial(nextIndex);
-});
-
-document.getElementById('prev-testimonial').addEventListener('click', () => {
-    let prevIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-    updateTestimonial(prevIndex);
-});
-
-dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => updateTestimonial(idx));
-});
 
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
+const submitBtn = document.getElementById('submit-btn');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formStatus.classList.remove('hidden');
-    contactForm.reset();
-    setTimeout(() => {
-        formStatus.classList.add('hidden');
-    }, 5000);
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>Sending...</span>';
+        }
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                if (formStatus) {
+                    formStatus.className = 'text-center text-sm font-medium py-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800/50';
+                    formStatus.innerText = 'Message sent successfully! I will get back to you soon.';
+                    formStatus.classList.remove('hidden');
+                }
+                contactForm.reset();
+            } else {
+                throw new Error(data.message || 'Submission failed');
+            }
+        } catch (error) {
+            if (formStatus) {
+                formStatus.className = 'text-center text-sm font-medium py-2 rounded-lg bg-red-950/60 text-red-400 border border-red-800/50';
+                formStatus.innerText = 'Oops! Failed to send. Please email directly to nafiurrahman946@gmail.com';
+                formStatus.classList.remove('hidden');
+            }
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+            setTimeout(() => {
+                if (formStatus) formStatus.classList.add('hidden');
+            }, 6000);
+        }
+    });
+}
 
 // Resume Download Trigger
-document.getElementById('download-resume-btn').addEventListener('click', () => {
-    const dummyContent = "Md Nafiur Rahman - Full-Stack Web Developer Resume\nEmail: nafiur@example.com\nGitHub: https://github.com/Nafiur71\nTech Stack: Python, FastAPI, React, SQL, Tailwind CSS";
-    const blob = new Blob([dummyContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Md_Nafiur_Rahman_Resume.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-});
+const downloadResumeBtn = document.getElementById('download-resume-btn');
+if (downloadResumeBtn) {
+    downloadResumeBtn.addEventListener('click', () => {
+        const dummyContent = "Md Nafiur Rahman - Full-Stack Web Developer Resume\nEmail: nafiurrahman946@gmail.com\nGitHub: https://github.com/Nafiur71\nTech Stack: Next.js, React 19, TypeScript, Python, FastAPI, Tailwind CSS";
+        const blob = new Blob([dummyContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Md_Nafiur_Rahman_Resume.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    });
+}
 
 // Demo Modal Triggers
 function openDemoModal(title) {
-    document.getElementById('modal-project-title').innerText = title;
-    document.getElementById('demo-modal').classList.remove('hidden');
+    const modalTitle = document.getElementById('modal-project-title');
+    const demoModal = document.getElementById('demo-modal');
+    if (modalTitle) modalTitle.innerText = title;
+    if (demoModal) demoModal.classList.remove('hidden');
 }
 
 function closeDemoModal() {
-    document.getElementById('demo-modal').classList.add('hidden');
+    const demoModal = document.getElementById('demo-modal');
+    if (demoModal) demoModal.classList.add('hidden');
 }
