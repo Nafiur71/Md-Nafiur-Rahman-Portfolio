@@ -35,31 +35,50 @@
 
 <body class="antialiased selection:bg-cyan-500/25 selection:text-cyan-200">
 
-    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 h-20 flex items-center justify-between">
+    <!-- Top Scroll Progress Bar -->
+    <div id="scroll-progress-bar"
+        class="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 z-50 transition-all duration-75 w-0 pointer-events-none shadow-[0_0_8px_rgba(6,182,212,0.8)]"></div>
+
+    <header class="fixed top-0 left-0 w-full z-40 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
                 <span
                     class="text-xl font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
-                    Md Nafiur <span class="gradient-text">Rahman</span>
+                    Md Nafiur Rahman
                 </span>
             </a>
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-            </nav>
+            <!-- Desktop Nav Links & Command Palette Trigger -->
+            <div class="hidden md:flex items-center space-x-7">
+                <nav class="flex items-center space-x-7 text-sm font-medium text-gray-300" id="desktop-nav">
+                    <a href="#about" class="nav-link hover:text-cyan-400 transition-colors py-1">Home</a>
+                    <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors py-1">Projects</a>
+                    <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors py-1">Skills</a>
+                    <a href="#services" class="nav-link hover:text-cyan-400 transition-colors py-1">Services</a>
+                    <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors py-1">Contact</a>
+                </nav>
 
+                <!-- Command Palette Shortcut Pill -->
+                <button id="command-palette-trigger"
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-900/90 border border-gray-800 hover:border-cyan-500/40 text-gray-400 hover:text-white text-xs transition-all cursor-pointer shadow-sm group"
+                    aria-label="Open Command Palette" title="Open Command Palette (Ctrl+K)">
+                    <i class="fa-solid fa-magnifying-glass text-[11px] text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-medium">Quick Action</span>
+                    <kbd class="px-1.5 py-0.5 rounded-md bg-gray-800 text-[10px] text-gray-400 border border-gray-700 font-mono">Ctrl K</kbd>
+                </button>
+            </div>
 
-            <!-- Mobile menu button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2"
-                aria-label="Toggle Navigation Menu">
-                <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
-            </button>
+            <!-- Mobile menu buttons -->
+            <div class="flex items-center gap-2 md:hidden">
+                <button id="mobile-command-trigger" class="p-2 rounded-lg text-gray-400 hover:text-cyan-400" aria-label="Open Quick Search">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2"
+                    aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Navigation Drawer -->
@@ -82,60 +101,104 @@
         </div>
     </header>
 
-    <section id="about" class="py-20 relative bg-gray-950/50 pt-28">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="about" class="py-20 relative bg-gray-950/50 pt-28 overflow-hidden">
+        <!-- Cinematic Ambient Glow & Dot-Grid Background -->
+        <div class="absolute inset-0 bg-dot-grid opacity-60 pointer-events-none"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/15 to-indigo-500/10 blur-[130px] rounded-full pointer-events-none -z-0"></div>
 
-                <!-- Left Portrait Container -->
-                <div class="lg:col-span-5">
-                    <div class="glow-box rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-gray-800 h-full">
-                        <div
-                            class="rounded-2xl bg-gray-900/90 p-4 flex flex-col items-center border border-gray-800 relative group overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-                            <!-- Image Wrapper Component -->
-                            <div
-                                class="w-full aspect-square rounded-xl overflow-hidden border border-gray-800 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/20 transition-all duration-300">
-                                <img src="images/Md_Nafiur_Rahman_profational_photo.png"
-                                    alt="Md. Nafiur Rahman Portrait"
-                                    class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500">
-                            </div>
+                <!-- Left Hero & Bio Details -->
+                <div class="lg:col-span-7 space-y-6 order-2 lg:order-1">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold tracking-wide shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Available for New Opportunities</span>
+                    </div>
 
-                            <!-- Name Tag Below Picture -->
-                            <div class="w-full text-center mt-4 pt-3 border-t border-gray-800/80">
-                                <h2 class="text-xl font-bold text-white tracking-wide">Md Nafiur Rahman</h2>
+                    <!-- Main Headline -->
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-3">
+                            Hi, I'm <span class="gradient-text">Md Nafiur Rahman</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl font-semibold text-cyan-400">
+                            Full-Stack Web Developer & Software Engineer
+                        </p>
+                    </div>
 
-                            </div>
+                    <!-- Bio Paragraphs -->
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+                        I build high-performance, user-centric web applications and robust backend systems. 
+                        Specializing in modern frontend engineering with <span class="text-white font-medium">Next.js</span>, <span class="text-cyan-300 font-medium">React 19</span>, and <span class="text-white font-medium">TypeScript</span>, paired with <span class="text-cyan-300 font-medium">FastAPI</span> and <span class="text-white font-medium">Python</span> for scalable APIs, automation, and data processing.
+                    </p>
 
+                    <!-- Key Metrics / Tech Highlights -->
+                    <div class="flex flex-wrap gap-3 pt-1">
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-900/90 border border-gray-800 text-xs font-medium text-gray-300">
+                            <i class="fa-solid fa-code text-cyan-400"></i>
+                            <span>Full-Stack Architecture</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-900/90 border border-gray-800 text-xs font-medium text-gray-300">
+                            <i class="fa-solid fa-laptop-code text-blue-400"></i>
+                            <span>7+ Real-World Projects</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-900/90 border border-gray-800 text-xs font-medium text-gray-300">
+                            <i class="fa-solid fa-bolt text-yellow-400"></i>
+                            <span>Fast & Scalable APIs</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons & Quick Socials -->
+                    <div class="pt-3 flex flex-wrap items-center gap-4">
+                        <a href="#projects"
+                            class="px-6 py-3.5 rounded-xl font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2 text-sm">
+                            <span>View Projects</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                        <button id="download-resume-btn"
+                            class="px-6 py-3.5 rounded-xl font-semibold text-gray-200 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-all duration-300 flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-download text-xs text-cyan-400"></i>
+                            <span>Download Resume</span>
+                        </button>
+
+                        <!-- Quick Social Links -->
+                        <div class="flex items-center gap-2 pl-1 sm:pl-3">
+                            <a href="https://github.com/Nafiur71" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-xl bg-gray-900/90 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all text-sm"
+                                aria-label="GitHub Profile">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/md-nafiur-rahman" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-xl bg-gray-900/90 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all text-sm"
+                                aria-label="LinkedIn Profile">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <button data-copy-email="nafiurrahman946@gmail.com"
+                                class="copy-email-btn w-10 h-10 rounded-xl bg-gray-900/90 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all text-sm cursor-pointer"
+                                aria-label="Copy Email Address" title="Click to copy email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Bio Details -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">About Me</h2>
-                        <div class="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
-                    </div>
+                <!-- Right Portrait Container (Clean, Natural Color, Balanced Frame) -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
+                    <div class="relative w-full max-w-[280px] sm:max-w-[300px]">
+                        <!-- Subtle ambient glow background -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-500"></div>
 
-                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
-                        I am a <strong class="text-white font-semibold">Full-Stack Web Developer</strong> passionate
-                        about building high-performance, user-centric web applications and robust backend systems.
-                        Leveraging modern frameworks like <span class="text-cyan-400">React</span> and <span
-                            class="text-emerald-400">FastAPI</span> along with Python data processing tools, I convert
-                        complex ideas into clean, scalable software solutions.
-                    </p>
-
-                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
-                        Along with strong problem-solving skills, I follow clean architecture principles, REST API best
-                        practices, and responsive UI engineering patterns. I am committed to continuous learning,
-                        writing maintainable code, and delivering seamless digital experiences for web platforms.
-                    </p>
-                    <div class="pt-2">
-                        <button id="download-resume-btn"
-                            class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2">
-                            <i class="fa-solid fa-download"></i>
-                            <span>Download Resume</span>
-                        </button>
+                        <!-- Sleek Card Container with Spotlight Glow -->
+                        <div class="relative spotlight-card rounded-3xl p-2.5 shadow-2xl border border-cyan-500/20 bg-gray-900/90 overflow-hidden group">
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-b from-gray-800/40 via-gray-900/60 to-gray-950 flex items-end justify-center">
+                                <!-- Soft radial ambient highlight behind head -->
+                                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-cyan-500/15 blur-2xl rounded-full pointer-events-none"></div>
+                                <img src="images/Md_Nafiur_Rahman_profational_photo.png"
+                                    alt="Md. Nafiur Rahman Portrait"
+                                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -146,375 +209,391 @@
 
 
     <section id="projects" class="py-20 relative">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Recent Projects</h2>
-                <p class="text-gray-400 text-base sm:text-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Recent Projects</h2>
+                <p class="text-gray-400 text-sm sm:text-base">
                     Here are some of the real-world applications and tools I've built.
                 </p>
-                <div class="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <!-- Interactive Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center items-center gap-2 mb-10">
+                <button class="project-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="all">
+                    All <span class="ml-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono">7</span>
+                </button>
+                <button class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="ai">
+                    AI & Next.js <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">2</span>
+                </button>
+                <button class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="fintech">
+                    Fintech & React <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">2</span>
+                </button>
+                <button class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="python">
+                    Python & Tools <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">3</span>
+                </button>
             </div>
 
             <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="projects-grid">
 
                 <!-- Project 1: Nirman AI -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="ai">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     AI & Next.js
                                 </span>
-                                <i class="fa-solid fa-helmet-safety text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-helmet-safety text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-2xl font-bold text-white tracking-wide">Nirman AI</h4>
-                                <p class="text-xs text-gray-400 mt-1">Smart Construction Cost Estimator</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">Nirman AI</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Smart Construction Cost Estimator</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
                                 Smart construction cost estimator & material calculator dashboard designed for quick project estimations. Calculates bricks, cement, sand, and rebar with 1-click PDF summary export.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Next.js</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">TypeScript</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">AI Estimator</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-microchip text-cyan-400"></i>
+                                <span>⚡ 1-Click BOQ & PDF Export Engine</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Next.js</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">TypeScript</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">AI Estimator</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/nirman-ai" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <a href="https://nirman-ai-ruby.vercel.app" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 2: HisabSplit -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="fintech">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     Fintech & React 19
                                 </span>
-                                <i class="fa-solid fa-money-bill-transfer text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-money-bill-transfer text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-2xl font-bold text-white tracking-wide">HisabSplit</h4>
-                                <p class="text-xs text-gray-400 mt-1">Local-First Bill Splitting App</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">HisabSplit</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Local-First Bill Splitting App</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
                                 Lightweight, local-first bill splitting and micro-accounting web application tailored for Bangladesh with bKash, Nagad, and Rocket support, plus offline Dexie.js (IndexedDB) persistence.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">React 19</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">TypeScript</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Dexie.js</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Tailwind</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-database text-cyan-400"></i>
+                                <span>💾 100% Offline Dexie.js (IndexedDB)</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">React 19</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">TypeScript</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Dexie.js</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Tailwind</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/HisabSplit" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <a href="https://hisab-split.vercel.app" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 3: Legal AI Platform -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="ai">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     LegalTech & AI
                                 </span>
-                                <i class="fa-solid fa-scale-balanced text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-scale-balanced text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-2xl font-bold text-white tracking-wide">Legal AI Platform</h4>
-                                <p class="text-xs text-gray-400 mt-1">Smart AI Legal Document Generator</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">Legal AI Platform</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Smart AI Legal Document Generator</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
                                 AI-powered legal automation platform featuring multi-step bilingual contract drafting wizards, real-time split-screen document preview, and instant legally sound PDF generation.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python/AI</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Next.js</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">PDF Engine</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-scale-balanced text-cyan-400"></i>
+                                <span>⚖️ Split-Screen Bilingual Contract Engine</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python/AI</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Next.js</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">PDF Engine</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/legal-ai-platform" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <a href="https://legal-ai-platform-psi.vercel.app" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 4: Omni Download Assistant -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="python">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     Desktop & Web Utility
                                 </span>
-                                <i class="fa-solid fa-cloud-arrow-down text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-cloud-arrow-down text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-2xl font-bold text-white tracking-wide">Omni Download Assistant</h4>
-                                <p class="text-xs text-gray-400 mt-1">Modern Download Manager for Windows</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">Omni Download Assistant</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Modern Download Manager for Windows</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
                                 Official website and portal for Omni Download Assistant (ODA)—a fast, modern open-source download manager for Windows with multi-threaded chunked downloads, stream capture, and system tray integration.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">HTML5/CSS3</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">JavaScript</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Windows/Desktop</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-bolt text-cyan-400"></i>
+                                <span>🚀 Multi-threaded Chunked Engine</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">HTML5/CSS3</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">JavaScript</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Windows/Desktop</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/nafiur71.github.io" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <a href="https://nafiur71.github.io/" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Site
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 5: BuildCalc -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="fintech">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     TypeScript App
                                 </span>
-                                <i class="fa-solid fa-calculator text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-calculator text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-2xl font-bold text-white tracking-wide">BuildCalc</h4>
-                                <p class="text-xs text-gray-400 mt-1">Estimation & Utility Web Application</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">BuildCalc</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Estimation & Utility Web Application</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                Construction & estimation web application engineered with TypeScript. Provides accurate
-                                material calculations, structured estimates, and responsive UX.
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
+                                Construction & estimation web application engineered with TypeScript. Provides accurate material calculations, structured estimates, and responsive UX.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">TypeScript</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">React</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-calculator text-cyan-400"></i>
+                                <span>📐 Real-time Material Calculation Engine</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">TypeScript</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">React</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/BuildCalc" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <a href="https://build-calc-nu.vercel.app" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 6: Automated-CSV-Data-Cleaner -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="python">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     Data Tooling
                                 </span>
-                                <i class="fa-solid fa-file-csv text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-file-csv text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-xl font-bold text-white tracking-wide">Automated-CSV-Data-Cleaner</h4>
-                                <p class="text-xs text-gray-400 mt-1">Python Data Processing</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">Automated-CSV-Data-Cleaner</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Python Data Processing</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                An automated Python script using Pandas to clean raw CSV datasets by removing duplicate
-                                rows, handling missing values with default fallbacks, and re-formatting schemas.
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
+                                An automated Python script using Pandas to clean raw CSV datasets by removing duplicate rows, handling missing values with default fallbacks, and re-formatting schemas.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Pandas</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-gray-300 border border-gray-800">CSV
-                                    Utility</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-filter text-cyan-400"></i>
+                                <span>🧹 Automated Schema & Null Recovery</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Pandas</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">CSV Utility</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/Automated-CSV-Data-Cleaner" target="_blank"
                             rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <button onclick="openDemoModal('Automated-CSV-Data-Cleaner')"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-play text-xs"></i> Demo
                         </button>
                     </div>
                 </div>
 
                 <!-- Project 7: Live-Weather-Scraper -->
-                <div class="glow-box rounded-2xl overflow-hidden flex flex-col justify-between group">
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="python">
                     <div>
-                        <!-- Project Graphic Preview Header -->
-                        <div
-                            class="h-44 bg-gradient-to-b from-gray-900/90 to-gray-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
                             <div class="flex justify-between items-center z-10">
-                                <span
-                                    class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
                                     Web Scraping
                                 </span>
-                                <i class="fa-solid fa-cloud-sun-rain text-cyan-400 text-2xl"></i>
+                                <i class="fa-solid fa-cloud-sun-rain text-cyan-400 text-lg"></i>
                             </div>
                             <div class="z-10">
-                                <h4 class="text-xl font-bold text-white tracking-wide">Live-Weather-Scraper</h4>
-                                <p class="text-xs text-gray-400 mt-1">Real-Time Weather Extraction</p>
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">Live-Weather-Scraper</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Real-Time Weather Extraction</p>
                             </div>
                         </div>
 
                         <!-- Details Body -->
-                        <div class="p-6">
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                A Python-based web scraper that fetches live weather data in real-time and
-                                structures/exports it into CSV and JSON formats using Pandas for downstream analytics.
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
+                                A Python-based web scraper that fetches live weather data in real-time and structures/exports it into CSV and JSON formats using Pandas for downstream analytics.
                             </p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Pandas</span>
-                                <span
-                                    class="text-xs font-mono px-2.5 py-1 rounded-md bg-gray-900 text-blue-300 border border-gray-800">JSON/CSV</span>
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-cloud text-cyan-400"></i>
+                                <span>📡 Real-Time Data Pipeline & Multi-Export</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-yellow-300 border border-gray-800">Python</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Pandas</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">JSON/CSV</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Footer Action Buttons -->
-                    <div class="p-6 pt-0 flex gap-3">
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
                         <a href="https://github.com/Nafiur71/Live-Weather-Scraper" target="_blank"
                             rel="noopener noreferrer"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-github text-sm"></i> GitHub
                         </a>
                         <button onclick="openDemoModal('Live-Weather-Scraper')"
-                            class="flex-1 text-center py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-play text-xs"></i> Demo
                         </button>
                     </div>
@@ -524,135 +603,277 @@
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-gray-950/50 relative">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Skills & Technologies</h2>
-                <p class="text-gray-400 text-base sm:text-lg">
-                    I work with modern tools and frameworks to build fast, scalable, and efficient web applications.
+    <section id="skills" class="py-20 bg-gray-950/50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Skills & Technologies</h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    Modern frameworks, languages, and developer tools I work with daily to build fast, scalable applications.
                 </p>
-                <div class="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-4"></div>
             </div>
 
-            <!-- Skills Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dual-Direction Infinite Tech Marquee -->
+            <div class="marquee-group space-y-6 marquee-mask py-4">
 
-                <!-- Python Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-yellow-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
-                            <i class="fa-brands fa-python"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Python</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Core backend scripting, data manipulation, automation scripts, and custom algorithm
-                            implementation using Pandas and core modules.
-                        </p>
-                    </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>Backend & Data</span>
-                        <span class="text-cyan-400">Advanced</span>
-                    </div>
-                </div>
-
-                <!-- FastAPI Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-cyan-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">FastAPI</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            High-performance asynchronous REST API development, Pydantic validation schemas, dependency
-                            injection, and automatic OpenAPI docs.
-                        </p>
-                    </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>API Engineering</span>
-                        <span class="text-cyan-400">Proficient</span>
-                    </div>
-                </div>
-
-                <!-- React Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-cyan-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
+                <!-- Row 1: Left to Right (Frontend & UI Stack) -->
+                <div class="animate-marquee-right flex gap-4 items-center">
+                    <!-- Set 1 -->
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
                             <i class="fa-brands fa-react"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">React</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Building fast, interactive, and component-based UIs with clean state management, modern
-                            hooks, and seamless API integrations.
-                        </p>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">React 19</span>
                     </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>Frontend UI</span>
-                        <span class="text-cyan-400">Proficient</span>
-                    </div>
-                </div>
-                <!-- Database Design Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-blue-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Database Design</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Managing relational and NoSQL databases with optimized queries, schema modeling, and secure
-                            data storage strategies.
-                        </p>
-                    </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>Storage & Architecture</span>
-                        <span class="text-blue-400">Intermediate</span>
-                    </div>
-                </div>
 
-                <!-- Tailwind CSS & Frontend Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-cyan-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-lg text-white font-black group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            N
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Next.js</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-lg text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">TypeScript</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-yellow-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">JavaScript</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
                             <i class="fa-brands fa-css3-alt"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Tailwind CSS & Web UI</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Crafting responsive, modern, and clean page layouts quickly using utility-first styling,
-                            semantic HTML5, and JavaScript.
-                        </p>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Tailwind CSS</span>
                     </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>Styling & Layouts</span>
-                        <span class="text-cyan-400">Advanced</span>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-orange-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">HTML5</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-css3"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">CSS3</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-purple-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Redux & Context</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Responsive UI</span>
+                    </div>
+
+                    <!-- Set 2 (Duplicate for seamless infinite loop) -->
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-react"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">React 19</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-lg text-white font-black group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            N
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Next.js</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-lg text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">TypeScript</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-yellow-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">JavaScript</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-css3-alt"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Tailwind CSS</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-orange-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">HTML5</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-css3"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">CSS3</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-purple-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Redux & Context</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Responsive UI</span>
                     </div>
                 </div>
 
-                <!-- TypeScript / Tools Skill Card -->
-                <div class="glow-box p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-blue-400 text-3xl mb-6 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all">
-                            <i class="fa-solid fa-code-branch"></i>
+                <!-- Row 2: Right to Left (Backend, Data & Dev Tools) -->
+                <div class="animate-marquee-left flex gap-4 items-center">
+                    <!-- Set 1 -->
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-yellow-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-python"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">TypeScript & Git</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Typed front-end development for robust web apps, version control using Git, and automated
-                            project repository workflows on GitHub.
-                        </p>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Python</span>
                     </div>
-                    <div
-                        class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                        <span>Tooling & Quality</span>
-                        <span class="text-blue-400">Proficient</span>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">FastAPI</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-table-cells"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Pandas</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">PostgreSQL</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-emerald-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">MongoDB</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-white group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Git & GitHub</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">RESTful APIs</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-docker"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Docker</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-gray-300 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Linux & Bash</span>
+                    </div>
+
+                    <!-- Set 2 (Duplicate for seamless infinite loop) -->
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-yellow-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Python</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">FastAPI</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-table-cells"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Pandas</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">PostgreSQL</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-emerald-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">MongoDB</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-white group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Git & GitHub</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-cyan-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">RESTful APIs</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-blue-400 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-brands fa-docker"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Docker</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gray-900/80 border border-gray-800 text-gray-200 shadow-lg backdrop-blur-sm hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105 transition-all cursor-default select-none group">
+                        <div class="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center text-xl text-gray-300 group-hover:scale-110 group-hover:text-cyan-300 transition-all border border-gray-800">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide whitespace-nowrap">Linux & Bash</span>
                     </div>
                 </div>
 
@@ -661,14 +882,12 @@
     </section>
 
     <section id="services" class="py-20 relative">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Services I Provide</h2>
-                <p class="text-gray-400 text-base sm:text-lg">
-                    I offer design and development solutions focused on building fast, modern, and user-friendly digital
-                    experiences.
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Services I Provide</h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    I offer design and development solutions focused on building fast, modern, and user-friendly digital experiences.
                 </p>
-                <div class="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-4"></div>
             </div>
 
             <!-- Service Cards Grid -->
@@ -739,155 +958,80 @@
     </section>
 
     <section id="contact" class="py-20 bg-gray-950/50 relative">
-        <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Contact Me</h2>
-                <p class="text-gray-400 text-base sm:text-lg">
-                    Have a project in mind? Let's connect and discuss how I can help bring your ideas to life.
-                </p>
-                <div class="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-4"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Contact Me</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Have a project in mind or want to collaborate? Feel free to reach out!</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Centered Contact Form -->
+            <div class="max-w-xl mx-auto">
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="glow-box rounded-3xl p-6 sm:p-8 space-y-6">
 
-                <!-- Left Info Box -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Get in touch today</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            I'm always open to discussing new projects, freelance opportunities, or technical
-                            collaborations.
-                        </p>
-                    </div>
+                    <!-- Web3Forms Access Key & Configuration -->
+                    <input type="hidden" name="access_key" value="6a223bf4-3d03-4a48-9bfe-d0299d6e88b7">
+                    <input type="hidden" name="subject" value="New Portfolio Contact Message">
+                    <input type="hidden" name="from_name" value="Portfolio Visitor">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">Email Me</p>
-                                <a href="mailto:nafiurrahman946@gmail.com"
-                                    class="text-white hover:text-cyan-400 font-medium text-sm transition-colors">nafiurrahman946@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 text-lg hover:text-cyan-400 transition-colors">
-                                <i class="fa-brands fa-github"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">GitHub Profile</p>
-                                <a href="https://github.com/Nafiur71" target="_blank" rel="noopener noreferrer"
-                                    class="text-white hover:text-cyan-400 font-medium text-sm transition-colors">github.com/Nafiur71</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">LinkedIn</p>
-                                <a href="https://www.linkedin.com/in/md-nafiur-rahman" target="_blank" rel="noopener noreferrer"
-                                    class="text-white hover:text-blue-400 font-medium text-sm transition-colors">linkedin.com/in/md-nafiur-rahman</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">Phone</p>
-                                <p class="text-white font-medium text-sm">+880 1640-600097</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Contact Form -->
-                <div class="lg:col-span-7">
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="glow-box rounded-3xl p-6 sm:p-8 space-y-6">
-
-                        <!-- Web3Forms Access Key & Configuration -->
-                        <input type="hidden" name="access_key" value="6a223bf4-3d03-4a48-9bfe-d0299d6e88b7">
-                        <input type="hidden" name="subject" value="New Portfolio Contact Message">
-                        <input type="hidden" name="from_name" value="Portfolio Visitor">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-xs font-medium text-gray-300 mb-2">Name</label>
-                                <input type="text" id="name" name="name" required placeholder="John Doe"
-                                    class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-xs font-medium text-gray-300 mb-2">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="example@email.com"
-                                    class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="phone" class="block text-xs font-medium text-gray-300 mb-2">Phone</label>
-                                <input type="text" id="phone" name="phone" placeholder="+1 (555) 000-0000"
-                                    class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
-                            </div>
-                            <div>
-                                <label for="company"
-                                    class="block text-xs font-medium text-gray-300 mb-2">Company</label>
-                                <input type="text" id="company" name="company" placeholder="Company Name"
-                                    class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
-                            </div>
-                        </div>
-
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label for="message" class="block text-xs font-medium text-gray-300 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" required
-                                placeholder="Please type your message here..."
-                                class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none"></textarea>
+                            <label for="name" class="block text-xs font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe"
+                                class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
                         </div>
-
-                        <button type="submit" id="submit-btn"
-                            class="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane text-xs"></i>
-                            <span>Send Message</span>
-                        </button>
-
-                        <!-- Status Message Div -->
-                        <div id="form-status"
-                            class="hidden text-center text-sm font-medium py-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">
-                            Message sent successfully! I will get back to you soon.
+                        <div>
+                            <label for="email" class="block text-xs font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com"
+                                class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
                         </div>
-                    </form>
-                </div>
+                    </div>
 
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-xs font-medium text-gray-300 mb-2">Phone</label>
+                            <input type="text" id="phone" name="phone" placeholder="+1 (555) 000-0000"
+                                class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                        </div>
+                        <div>
+                            <label for="company"
+                                class="block text-xs font-medium text-gray-300 mb-2">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Company Name"
+                                class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs font-medium text-gray-300 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            placeholder="Please type your message here..."
+                            class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn"
+                        class="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Send Message</span>
+                    </button>
+
+                    <!-- Status Message Div -->
+                    <div id="form-status"
+                        class="hidden text-center text-sm font-medium py-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">
+                        Message sent successfully! I will get back to you soon.
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 relative">
+    <footer class="py-12 relative border-t border-gray-900/80">
         <div
-            class="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col md:flex-row items-center justify-between gap-6">
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-                <span class="text-lg font-bold text-white">Md Nafiur <span class="gradient-text">Rahman</span></span>
+                <span class="text-lg font-bold text-white">Md Nafiur Rahman</span>
                 <p class="text-xs text-gray-500 mt-1">© 2026 Md Nafiur Rahman. All Rights Reserved.</p>
             </div>
 
-            <!-- Quick Links -->
-            <div class="flex flex-wrap gap-6 text-xs text-gray-400">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-            </div>
 
             <!-- Social Links -->
             <div class="flex items-center space-x-4">
@@ -899,10 +1043,11 @@
                     class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all">
                     <i class="fa-brands fa-linkedin-in text-sm"></i>
                 </a>
-                <a href="mailto:nafiurrahman946@gmail.com"
-                    class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all">
+                <button data-copy-email="nafiurrahman946@gmail.com"
+                    class="copy-email-btn w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-400 transition-all cursor-pointer"
+                    aria-label="Copy Email Address" title="Click to copy email">
                     <i class="fa-solid fa-envelope text-sm"></i>
-                </a>
+                </button>
             </div>
         </div>
     </footer>
@@ -936,6 +1081,194 @@
                     class="px-5 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-btn">
                     Close Preview
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Glass Toast Notification -->
+    <div id="toast-notification"
+        class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 px-4 py-3 rounded-2xl bg-gray-900/95 border border-cyan-500/40 text-white shadow-2xl shadow-cyan-950/60 backdrop-blur-xl">
+        <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <p class="text-xs font-bold text-white tracking-wide" id="toast-title">Email Copied to Clipboard!</p>
+            <p class="text-[11px] text-gray-400 font-mono" id="toast-message">nafiurrahman946@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Command Palette (Ctrl+K / Cmd+K Modal) -->
+    <div id="command-palette"
+        class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-start justify-center pt-16 sm:pt-24 px-4 transition-all duration-200">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-xl w-full shadow-2xl shadow-cyan-950/40 overflow-hidden transform scale-95 opacity-0 transition-all duration-200" id="command-palette-content">
+            <!-- Search Input Header -->
+            <div class="flex items-center px-4 py-3.5 border-b border-gray-800 bg-gray-950/50">
+                <i class="fa-solid fa-magnifying-glass text-cyan-400 text-sm mr-3"></i>
+                <input type="text" id="command-palette-input"
+                    class="w-full bg-transparent text-white placeholder-gray-500 text-sm focus:outline-none font-sans"
+                    placeholder="Type a command or search (e.g. Nirman AI, Projects, Resume)..." autocomplete="off">
+                <kbd class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-400 border border-gray-700 font-mono ml-2 cursor-pointer" id="close-palette-badge">ESC</kbd>
+            </div>
+
+            <!-- Command List -->
+            <div class="max-h-[380px] overflow-y-auto p-2 space-y-2 text-sm" id="command-palette-list">
+                <!-- Group: Navigation -->
+                <div class="command-group space-y-1">
+                    <div class="command-group-title px-3 pt-1 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Navigation</div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#about">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-house text-cyan-400 w-4 text-center"></i>
+                            <span>Home / About Bio</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Jump</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#projects">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-laptop-code text-cyan-400 w-4 text-center"></i>
+                            <span>Recent Projects (7)</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Jump</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#skills">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-code text-cyan-400 w-4 text-center"></i>
+                            <span>Skills & Technologies</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Jump</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#services">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-layer-group text-cyan-400 w-4 text-center"></i>
+                            <span>Services I Provide</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Jump</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#contact">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-cyan-400 w-4 text-center"></i>
+                            <span>Contact Me</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Jump</span>
+                    </div>
+                </div>
+
+                <!-- Group: Projects -->
+                <div class="command-group space-y-1">
+                    <div class="command-group-title px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Featured Projects</div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://nirman-ai-ruby.vercel.app">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-helmet-safety text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">Nirman AI</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Smart Construction Cost Estimator</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://hisab-split.vercel.app">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-money-bill-transfer text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">HisabSplit</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Local-First Bill Splitting App</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://legal-ai-platform-psi.vercel.app">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-scale-balanced text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">Legal AI Platform</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— AI Legal Document Generator</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://nafiur71.github.io/">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cloud-arrow-down text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">Omni Download Assistant</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Modern Download Manager</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Site <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://build-calc-nu.vercel.app">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-calculator text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">BuildCalc</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Material Estimation App</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="demo" data-target="Automated-CSV-Data-Cleaner">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-file-csv text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">Automated-CSV-Data-Cleaner</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Python Data Tooling</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-yellow-400 font-mono">Run Demo <i class="fa-solid fa-play text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="demo" data-target="Live-Weather-Scraper">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cloud-sun-rain text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">Live-Weather-Scraper</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Real-Time Weather Tool</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-yellow-400 font-mono">Run Demo <i class="fa-solid fa-play text-[10px] ml-1"></i></span>
+                    </div>
+                </div>
+
+                <!-- Group: Actions -->
+                <div class="command-group space-y-1">
+                    <div class="command-group-title px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Quick Actions</div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="resume">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-download text-cyan-400 w-4 text-center"></i>
+                            <span>Download Resume (CV)</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Action</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="copy-email">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-copy text-cyan-400 w-4 text-center"></i>
+                            <span>Copy Email (nafiurrahman946@gmail.com)</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">Action</span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://github.com/Nafiur71">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-github text-cyan-400 w-4 text-center"></i>
+                            <span>Open GitHub Profile (@Nafiur71)</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">External <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://www.linkedin.com/in/md-nafiur-rahman">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-linkedin text-cyan-400 w-4 text-center"></i>
+                            <span>Open LinkedIn Profile</span>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">External <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Tips -->
+            <div class="px-4 py-2.5 bg-gray-950 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-500">
+                <div class="flex items-center gap-3">
+                    <span><kbd class="px-1 py-0.5 rounded bg-gray-800 text-[10px] text-gray-400 font-mono">↑</kbd> <kbd class="px-1 py-0.5 rounded bg-gray-800 text-[10px] text-gray-400 font-mono">↓</kbd> Navigate</span>
+                    <span><kbd class="px-1 py-0.5 rounded bg-gray-800 text-[10px] text-gray-400 font-mono">Enter</kbd> Select</span>
+                    <span><kbd class="px-1 py-0.5 rounded bg-gray-800 text-[10px] text-gray-400 font-mono">Esc</kbd> Close</span>
+                </div>
+                <span class="text-cyan-500/80 font-mono">Command Palette</span>
             </div>
         </div>
     </div>
