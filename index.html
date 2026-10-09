@@ -141,7 +141,7 @@
                         </div>
                         <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-900/90 border border-gray-800 text-xs font-medium text-gray-300">
                             <i class="fa-solid fa-laptop-code text-blue-400"></i>
-                            <span>7+ Real-World Projects</span>
+                            <span>8+ Real-World Projects</span>
                         </div>
                         <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-900/90 border border-gray-800 text-xs font-medium text-gray-300">
                             <i class="fa-solid fa-bolt text-yellow-400"></i>
@@ -220,10 +220,10 @@
             <!-- Interactive Category Filter Tabs -->
             <div class="flex flex-wrap justify-center items-center gap-2 mb-10">
                 <button class="project-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="all">
-                    All <span class="ml-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono">7</span>
+                    All <span class="ml-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono">8</span>
                 </button>
                 <button class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="ai">
-                    AI & Next.js <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">2</span>
+                    AI & Next.js <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">3</span>
                 </button>
                 <button class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer" data-filter="fintech">
                     Fintech & React <span class="ml-1.5 px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 text-xs font-mono">2</span>
@@ -236,7 +236,59 @@
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="projects-grid">
 
-                <!-- Project 1: Nirman AI -->
+                <!-- Project 1: CarKino.com -->
+                <div class="project-card spotlight-card flex flex-col justify-between group" data-category="ai">
+                    <div>
+                        <!-- Project Header -->
+                        <div class="px-5 pt-4 pb-3 bg-gradient-to-b from-gray-900/90 to-gray-950/70 border-b border-gray-800/70 flex flex-col justify-between gap-2.5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+                            <div class="flex justify-between items-center z-10">
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                    Next.js & Auto Marketplace
+                                </span>
+                                <i class="fa-solid fa-car-side text-cyan-400 text-lg"></i>
+                            </div>
+                            <div class="z-10">
+                                <h4 class="text-lg font-bold text-white tracking-wide group-hover:text-cyan-300 transition-colors">CarKino.com</h4>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Automotive Marketplace & Portal</p>
+                            </div>
+                        </div>
+
+                        <!-- Details Body -->
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <p class="text-xs text-gray-300 leading-relaxed mb-3 line-clamp-3">
+                                High-performance automotive commerce platform featuring verified car listings, multi-criteria search filtering, real-time vehicle comparison engine, auto parts shop, and seller dashboard.
+                            </p>
+
+                            <!-- Architecture Metric Badge -->
+                            <div class="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg arch-metric-pill text-[11px] font-mono text-cyan-300 w-full">
+                                <i class="fa-solid fa-gauge-high text-cyan-400"></i>
+                                <span>🏎️ Real-Time Comparison & Multi-Vendor Engine</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">Next.js</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-blue-300 border border-gray-800">TypeScript</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-gray-300 border border-gray-800">Tailwind</span>
+                                <span class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-gray-900 text-cyan-300 border border-gray-800">E-Commerce</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action Buttons -->
+                    <div class="px-5 pb-5 pt-0 flex gap-2.5">
+                        <a href="https://github.com/Nafiur71/CarKino.com" target="_blank" rel="noopener noreferrer"
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-github text-sm"></i> GitHub
+                        </a>
+                        <a href="https://carkino.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-btn hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Nirman AI -->
                 <div class="project-card spotlight-card flex flex-col justify-between group" data-category="ai">
                     <div>
                         <!-- Project Header -->
@@ -1125,7 +1177,7 @@
                     <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="navigate" data-target="#projects">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-laptop-code text-cyan-400 w-4 text-center"></i>
-                            <span>Recent Projects (7)</span>
+                            <span>Recent Projects (8)</span>
                         </div>
                         <span class="text-xs text-gray-500 font-mono">Jump</span>
                     </div>
@@ -1155,6 +1207,16 @@
                 <!-- Group: Projects -->
                 <div class="command-group space-y-1">
                     <div class="command-group-title px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Featured Projects</div>
+                    <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://carkino.vercel.app/">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-car-side text-cyan-400 w-4 text-center"></i>
+                            <div>
+                                <span class="font-medium text-white">CarKino.com</span>
+                                <span class="text-xs text-gray-400 ml-1.5">— Automotive Marketplace & Auto Portal</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-mono">Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></span>
+                    </div>
                     <div class="command-item flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/80 cursor-pointer transition-colors" data-action="link" data-url="https://nirman-ai-ruby.vercel.app">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-helmet-safety text-cyan-400 w-4 text-center"></i>
