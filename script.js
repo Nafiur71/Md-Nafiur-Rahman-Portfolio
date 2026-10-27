@@ -6,7 +6,8 @@ const mobileLinks = document.querySelectorAll('.mobile-link');
 
 if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', (!isHidden).toString());
         if (menuIcon) {
             if (mobileMenu.classList.contains('hidden')) {
                 menuIcon.className = 'fa-solid fa-bars text-2xl';
@@ -19,6 +20,7 @@ if (mobileMenuBtn && mobileMenu) {
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             if (menuIcon) {
                 menuIcon.className = 'fa-solid fa-bars text-2xl';
             }
@@ -83,16 +85,17 @@ if (contactForm) {
 const downloadResumeBtn = document.getElementById('download-resume-btn');
 if (downloadResumeBtn) {
     downloadResumeBtn.addEventListener('click', () => {
-        const dummyContent = "Md Nafiur Rahman - Full-Stack Web Developer Resume\nEmail: nafiurrahman946@gmail.com\nGitHub: https://github.com/Nafiur71\nTech Stack: Next.js, React 19, TypeScript, Python, FastAPI, Tailwind CSS";
-        const blob = new Blob([dummyContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Md_Nafiur_Rahman_Resume.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
+        // Official PDF download handled natively by anchor tag
+
+
+
+
+
+
+
+
+
+
     });
 }
 
@@ -131,8 +134,12 @@ const projectCards = document.querySelectorAll('.project-card');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
 
         const filterValue = btn.getAttribute('data-filter');
 
@@ -253,6 +260,7 @@ const mobileCommandTrigger = document.getElementById('mobile-command-trigger');
 const closePaletteBadge = document.getElementById('close-palette-badge');
 const commandItems = document.querySelectorAll('.command-item');
 let selectedIndex = 0;
+let lastActiveElement = null;
 
 function getVisibleCommandItems() {
     return Array.from(commandItems).filter(item => !item.classList.contains('is-hidden'));
@@ -271,6 +279,7 @@ function updateSelectedCommandItem() {
 
 function openCommandPalette() {
     if (!commandPalette) return;
+    lastActiveElement = document.activeElement;
     commandPalette.classList.remove('hidden');
     setTimeout(() => {
         if (commandPaletteContent) {
@@ -295,6 +304,9 @@ function closeCommandPalette() {
     }
     setTimeout(() => {
         commandPalette.classList.add('hidden');
+        if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+            lastActiveElement.focus();
+        }
     }, 150);
 }
 
@@ -316,10 +328,11 @@ function executeCommand(item) {
     } else if (action === 'resume') {
         if (downloadResumeBtn) downloadResumeBtn.click();
     } else if (action === 'copy-email') {
-        const email = 'nafiurrahman946@gmail.com';
-        navigator.clipboard.writeText(email).then(() => {
-            showToast('Email Copied to Clipboard!', email);
-        });
+        if (copyEmailButtons.length > 0) {
+            copyEmailButtons[0].click();
+        } else {
+            showToast('Contact Email:', 'nafiurrahman946@gmail.com');
+        }
     }
 }
 
@@ -353,11 +366,36 @@ function filterCommands(query) {
 
 if (commandPaletteTrigger) commandPaletteTrigger.addEventListener('click', openCommandPalette);
 if (mobileCommandTrigger) mobileCommandTrigger.addEventListener('click', openCommandPalette);
-if (closePaletteBadge) closePaletteBadge.addEventListener('click', closeCommandPalette);
+if (closePaletteBadge) {
+    closePaletteBadge.addEventListener('click', closeCommandPalette);
+    closePaletteBadge.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            closeCommandPalette();
+        }
+    });
+}
 
 if (commandPalette) {
     commandPalette.addEventListener('click', (e) => {
         if (e.target === commandPalette) closeCommandPalette();
+    });
+
+    // Accessible keyboard focus trap
+    commandPalette.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            const focusable = commandPalette.querySelectorAll('input, [tabindex="0"], button');
+            if (focusable.length < 2) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
     });
 }
 

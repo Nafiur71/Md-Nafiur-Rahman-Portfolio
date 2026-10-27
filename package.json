@@ -1,0 +1,21 @@
+{
+  "name": "md-nafiur-rahman-portfolio",
+  "version": "1.0.0",
+  "description": "Md Nafiur Rahman - Full-Stack Web Developer Portfolio",
+  "main": "script.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nafiur71/Md-Nafiur-Rahman-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "Md Nafiur Rahman",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
